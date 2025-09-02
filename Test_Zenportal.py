@@ -52,7 +52,8 @@ def test_successful_login_logout(setup):
         # Validate login success by waiting for dashboard and take screenshots
         page.wait_for_url("**/dashboard", timeout=5000)
         expect(page).to_have_url("https://v2.zenclass.in/dashboard")
-        page.wait_for_timeout(3000)
+        # page.wait_for_timeout(3000)
+        # page.wait_for_load_state()
         page.screenshot(path="../valid_login.png")
 
         # Perform logout
@@ -100,4 +101,5 @@ def test_unsuccessful_login_scenarios(setup, username, password, expected_error)
 
     except AssertionError as e:
         # if failed raise exception
+
         pytest.fail(f"Assertion failed: {e}")
